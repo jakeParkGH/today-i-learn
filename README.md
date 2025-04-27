@@ -1,68 +1,123 @@
-# Astro Starter Kit: Blog
+# Today I Learn
 
-```sh
-pnpm create astro@latest -- --template blog
-```
+## 📦 설치된 패키지 및 버전
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+### 주요 의존성
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- astro: latest
+- react: latest
+- react-dom: latest
+- sass: ^1.87.0
+- tailwindcss: latest
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+### 개발 의존성
 
-Features:
+- eslint: latest
+- prettier: ^3.5.3
+- stylelint: ^16.19.1
+- typescript: latest
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+## 🛠️ 개발 도구 설정
 
-## 🚀 Project Structure
+### ESLint
 
-Inside of your Astro project, you'll see the following folders and files:
+- JavaScript/TypeScript 코드 린팅
+- React/Astro 컴포넌트 린팅
+- `.eslintrc.json` 설정 파일 사용
+
+### Prettier
+
+- 코드 포맷팅
+- `.prettierrc` 설정 파일 사용
+- astro 플러그인 통합
+
+### Stylelint
+
+- SCSS/CSS 린팅
+- `.stylelintrc.json` 설정 파일 사용
+- prettier 통합
+
+## 📁 프로젝트 구조
 
 ```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+today-i-learn/
+├── .astro/              # Astro 빌드 캐시
+├── .vscode/             # VS Code 설정
+├── node_modules/        # 의존성 패키지
+├── public/              # 정적 파일
+├── src/                 # 소스 코드
+│   ├── components/      # 재사용 가능한 컴포넌트
+│   ├── content/         # 콘텐츠 데이터
+│   ├── layouts/         # 페이지 레이아웃
+│   ├── pages/           # 라우팅 페이지
+│   ├── shared/          # 공유 유틸리티
+│   ├── styles/          # 스타일시트
+│   ├── consts.ts        # 상수 정의
+│   └── content.config.ts # 콘텐츠 설정
+├── .eslintrc.json       # ESLint 설정
+├── .prettierrc          # Prettier 설정
+├── .stylelintrc.json    # Stylelint 설정
+├── astro.config.mjs     # Astro 설정
+├── package.json         # 프로젝트 메타데이터
+├── pnpm-lock.yaml       # 패키지 잠금 파일
+└── tsconfig.json        # TypeScript 설정
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🚀 개발 스크립트
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+# 개발 서버 실행
+pnpm dev
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+# 프로덕션 빌드
+pnpm build
 
-Any static assets, like images, can be placed in the `public/` directory.
+# 린트 실행
+pnpm lint
 
-## 🧞 Commands
+# 코드 포맷팅
+pnpm format
+```
 
-All commands are run from the root of the project, from a terminal:
+## lint 설정 상세
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+### [설정]
 
-## 👀 Want to learn more?
+```
+ESLint v9에 맞춰 새로운 설정 파일 형식(eslint.config.js)으로 변경
+⬇️
+TypeScript, React, JSX A11y 관련 ESLint 플러그인 설치 및 설정
+⬇️
+Astro 파일을 위한 ESLint 설정 추가
+⬇️
+package.json의 lint 스크립트에서 .astro 파일 제외 (Astro 파일은 별도의 파서가 필요하므로)
+```
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### [출처]
 
-## Credit
+- https://eslint.org/docs/latest/use/configure/migration-guide (상) 공식문서
+- https://ota-meshi.github.io/eslint-plugin-astro/user-guide/ (상) 공식문서
+- https://typescript-eslint.io/getting-started (상) 공식문서
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+## stylelint 설정
+
+### 설치
+
+```
+pnpm add -D stylelint stylelint-config-standard-scss stylelint-prettier stylelint-config-prettier prettier prettier-plugin-astro
+```
+
+### stylelintrc.json
+
+```
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-prettier/recommended",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "prettier/prettier": true
+  }
+}
+```

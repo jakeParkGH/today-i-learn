@@ -1,0 +1,10 @@
+ 
+	.link {
+		text-decoration: none;
+		color: rgb(var(--gray));
+
+    &:hover {
+      color: rgb(var(--gray-dark));
+    }
+	}
+

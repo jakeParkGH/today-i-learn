@@ -1,0 +1,13 @@
+.footer {
+  padding: 2em 1em 6em;
+  color: rgb(var(--gray));
+  background: linear-gradient(var(--gray-gradient)) no-repeat;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1em;
+}
