@@ -1,0 +1,20 @@
+{
+  // 1. 저장 시 Prettier 자동 포맷 활성화
+  "editor.formatOnSave": true,
+
+  // 2. 기본 포맷터를 Prettier로 지정 (언어별 설정 권장)
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // 3. 저장 시 Stylelint 자동 수정 활성화 (가장 중요!)
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit" // 또는 true (VS Code 버전에 따라)
+  },
+
+  "stylelint.stylelintPath": "./.stylelintrc.json",
+  "stylelint.packageManager": "pnpm"
+}

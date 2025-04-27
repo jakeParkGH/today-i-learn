@@ -1,0 +1,29 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "order/properties-order": [
+      [
+        "display",
+        "position",
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "flex",
+        "flex-direction",
+        "justify-content",
+        "align-items",
+        "width",
+        "height",
+        "margin",
+        "padding",
+        "font-size",
+        "font-weight",
+        "color",
+        "background",
+        "border"
+      ]
+    ]
+  }
+}
