@@ -256,13 +256,13 @@ Apple은 하드웨어 생태계(iPhone, iPad)를 제어하므로(<a href="https:
 산출합니다.(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-device-pixel-ratio">1</a>)</p>
 <h5 id="반응형-웹-디자인을-가능하게-하는-방법">반응형 웹 디자인을 가능하게 하는 방법:</h5>
 <p>웹 개발자가 장치의 픽셀 밀도를 조회하고 적절한 크기의 애셋(예: 고 DPR 화면용 고해상도 이미지)을 제공하거나 렌더링(예: HTML 캔버스용)을 조정할 수 있도록 합니다.(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-device-pixel-ratio">1</a>)
-JavaScript(window.devicePixelRatio) 또는 CSS(resolution 미디어 쿼리 또는 비표준 <code>-webkit-device-pixel-ratio</code> 사용)에서 사용할 수 있습니다.(4)</p>
+JavaScript(window.devicePixelRatio) 또는 CSS(resolution 미디어 쿼리 또는 비표준 <code>-webkit-device-pixel-ratio</code> 사용)에서 사용할 수 있습니다.(<a href="https://developer.mozilla.org/en-US/docs/Glossary/CSS_pixel">4</a>)</p>
 <h5 id="meta-nameviewport-contentwidthdevice-width-initial-scale1의-결정적-역할"><code>&#x3C;meta name="viewport" content="width=device-width, initial-scale=1"></code>의 결정적 역할:</h5>
 <p>모바일 브라우저는 초기에 “가상 뷰포트”(실제 화면보다 넓음, 예: 980px)를 사용한 다음 페이지를 축소하여 보여줍니다. 이는 모바일에 최적화되지 않은 사이트를 어느 정도 사용할 수 있게 만들었지만, 좁은 너비를 기반으로 하는 미디어 쿼리를 사용하는 반응형 디자인을 망가뜨렸습니다.
 (<a href="https://developer.apple.com/documentation/uikit/uiscreen">14</a>)</p>
 <h5 id="widthdevice-width">width=device-width:</h5>
 <p>뷰포트 너비를 장치 화면의 물리적 너비(CSS 픽셀 단위)로 설정합니다.(<a href="https://developer.apple.com/documentation/uikit/uiscreen">14</a>) 이는 CSS 레이아웃 뷰포트를 장치의 논리적 너비와 효과적으로 일치시킵니다.
-W3C CSS Viewport Module에 따르면 이는 “실제 뷰포트(actual viewport)“에 영향을 미칩니다.(26)</p>
+W3C CSS Viewport Module에 따르면 이는 “실제 뷰포트(actual viewport)“에 영향을 미칩니다.(<a href="https://caniuse.com/devicepixelratio">26</a>)</p>
 <h5 id="initial-scale1">initial-scale=1:</h5>
 <p>페이지가 처음 로드될 때 확대/축소 수준을 제어하여 이 초기 확대/축소 수준에서 CSS 픽셀과 장치 독립적 픽셀(또는 OS의 논리적 픽셀) 간의 1:1 관계를 설정합니다.(<a href="https://developer.apple.com/documentation/uikit/uiscreen">14</a>)
 initial-scale=1이 없으면 width=device-width가 설정되어 있어도 브라우저가 여전히 일부 기본 배율을 적용하여 CSS 픽셀이 장치의 논리적 픽셀과 1:1로 정렬되지 않을 수 있습니다.</p>
