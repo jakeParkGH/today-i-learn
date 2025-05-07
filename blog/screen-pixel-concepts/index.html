@@ -291,6 +291,7 @@ width=device-width는 CSS 픽셀 단위의 레이아웃 너비를 장치의 논�
 <blockquote>
 <p>각 (OS 정보 기반) 네이티브 ➡️ WebView devicePixelRatio 정보 전달 흐름</p>
 </blockquote>
+<hr>
 <h5 id="android-webview-blink-엔진">Android WebView (Blink 엔진):</h5>
 <p>Android의 WebView 클래스는 Blink 렌더링 엔진(Chrome과 동일한 엔진)을 사용합니다. 네이티브 애플리케이션 내에서 웹 콘텐츠를 원활하게 렌더링하도록 설계되었습니다.</p>
 <h5 id="displaymetricsdensity를-blink로-전달">DisplayMetrics.density를 Blink로 전달:</h5>
@@ -308,6 +309,7 @@ devicePixelRatio를 올바르게 계산하는 데 필수적임을 나타냅니�
 <p><code>&#x3C;meta name="viewport" content="width=device-width, initial-scale=1"></code>을 사용하면 CSS 픽셀이 웹에서 dp에 해당하는 단위가 됩니다.
 그러면 window.devicePixelRatio는 물리적 픽셀 / dp에 해당하는 CSS 픽셀이 되며, 이는 DisplayMetrics.density와 수치적으로 동일합니다.
 <a href="https://developer.apple.com/documentation/uikit/uiview/contentscalefactor?language=objc">31</a>은 이에 대해 논의합니다: “WebView가 예를 들어 너비가 1920 물리적 픽셀인 경우 CSS 픽셀 단위의 너비는 hdpi 디스플레이에서 1280px여야 합니다.” (1920/1.5=1280). 이는 논리적 CSS 너비 = 물리적 픽셀 너비 / devicePixelRatio 관계를 확인시켜 줍니다.</p>
+<hr>
 <h5 id="ios---wkwebview-webkit-엔진">IOS - WKWebView (WebKit 엔진):</h5>
 <p>iOS의 최신 WebView 구성 요소로, WebKit 엔진(Safari와 동일)을 사용합니다.</p>
 <h5 id="uiscreenmainscale을-webkit으로-전달">UIScreen.main.scale을 WebKit으로 전달:</h5>
@@ -331,6 +333,7 @@ WebView가 다른 배율 논리를 사용하면 웹 콘텐츠가 인접한 네�
 따라서 렌더링 엔진(Blink/WebKit)은 임베딩 환경에서 네이티브 배율(Android의 DisplayMetrics.density, iOS의 UIScreen.scale)을 쿼리하거나 수신하도록 설계되었습니다.(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Viewport_meta_element">23</a>) 이러한 위임은 WebView 내부의 window.devicePixelRatio가 네이티브 OS 배율을
 미러링하도록 보장하는 직접적인 메커니즘이며, 사용자가 문의하는 동등성으로 이어집니다.<br>
 렌더링 엔진은 OS의 밀도 정보를 웹 좌표계로 충실히 변환하는 다리 역할을 합니다.</p>
+<hr>
 <br>
 <h4 id="7️⃣-정리">7️⃣ 정리</h4>
 <blockquote>
