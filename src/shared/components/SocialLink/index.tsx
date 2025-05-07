@@ -13,13 +13,7 @@ export const SocialLink = ({ href, label, icon }: SocialLinkProps) => {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className={cx('link')}>
       <span className="sr-only">{label}</span>
-      <svg
-        viewBox="0 0 16 16"
-        aria-hidden="true"
-        width="32"
-        height="32"
-        astro-icon={`social/${icon}`}
-      >
+      <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32">
         <path fill="currentColor" d={icon} />
       </svg>
     </a>
