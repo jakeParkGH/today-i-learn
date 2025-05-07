@@ -124,7 +124,7 @@ X dp로 정의된 UI 요소는 화면에서 <code>X × density</code> 물리적 
 <li>xxxhdpi (640dpi): 4.0</li>
 </ul>
 <br>
-<h5 id="정보-흐름-os에서-️-displaymetrics로️️️">정보 흐름 (OS에서 ➡️ DisplayMetrics로)⭐️⭐️⭐️:</h5>
+<h5 id="정보-흐름-os에서-️-displaymetrics로">정보 흐름 (OS에서 ➡️ DisplayMetrics로):</h5>
 <p>Android OS는 디스플레이 하드웨어에서 해상도 및 물리적 크기를 포함한 물리적 특성을 조회합니다.
 이를 통해 densityDpi를 계산합니다.
 이 densityDpi와 파생된 density (및 widthPixels, heightPixels와 같은 기타 메트릭)가 DisplayMetrics 객체에 채워집니다.
@@ -206,7 +206,7 @@ X dp로 정의된 UI 요소는 화면에서 <code>X × density</code> 물리적 
 <span class="line"><span>- nativeScale: 물리적 화면의 기본 배율입니다.</span></span></code></pre>
 <p>bounds (포인트 단위) × scale = nativeBounds (픽셀 단위, 근사치이며 최신 장치의 주 디스플레이에서는 scale이 일반적으로 nativeScale과 동일함).<br>
 (<a href="https://developer.android.com/develop/ui/views/layout/webapps/targeting">11</a>)은 UIScreen.scale이 UIKit 배율이며 때때로 기본 배율과 다를 수 있어 OS에서 중간 배율 조정 단계가 발생할 수 있다고 설명합니다. 그러나 대부분의 앱 개발에서 UIScreen.main.scale이 관련 요소입니다. (<a href="https://developer.apple.com/documentation/webkit/wkwebviewconfiguration">32</a>)는 Metal 앱의 경우 리샘플링을 피하기 위해 nativeScale에서 렌더링할 것을 강조합니다.(<a href="https://developer.apple.com/documentation/mapkit/mkoverlayrenderer/contentscalefactor?changes=late__8_6_8_7&#x26;language=objc">17</a>)</p>
-<h5 id="정보-흐름-os에서-uiscreen으로️️️">정보 흐름 (OS에서 UIScreen으로)⭐️⭐️⭐️:</h5>
+<h5 id="정보-흐름-os에서-uiscreen으로">정보 흐름 (OS에서 UIScreen으로):</h5>
 <p>iOS 운영체제는 연결된 디스플레이 하드웨어를 식별합니다.
 하드웨어의 픽셀 밀도(예: Retina 대 비 Retina)를 기반으로 디스플레이의 물리적 픽셀 해상도(nativeBounds)와 고유한 배율(nativeScale)을 결정합니다.
 이 정보는 UIScreen 속성을 통해 노출되며, UIScreen.main.scale은 포인트 단위 UI 렌더링을 위한 기본 배율을 제공합니다.</p>
