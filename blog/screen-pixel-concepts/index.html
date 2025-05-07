@@ -6,7 +6,7 @@ main[data-astro-cid-bvzihdzo]{width:calc(100% - 2em);max-width:100%;margin:0}.he
 <br>
 <h4 id="1️⃣-화면-픽셀-기초-개념">1️⃣ 화면 픽셀 기초 개념</h4>
 <blockquote>
-<p>KeyWord 정리</p>
+<p>주요 개념 KeyWord 정리</p>
 </blockquote>
 <h5 id="물리적-픽셀-physical-pixels">물리적 픽셀 (Physical Pixels):</h5>
 <p>디스플레이 화면에서 색상을 표현할 수 있는 가장 작은 개별 하드웨어 구성 요소(점)입니다. 이는 화면 매트릭스를 구성하는 실제적이고 유형적인 픽셀입니다.(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-device-pixel-ratio">1</a>)<br>
@@ -203,7 +203,7 @@ X dp로 정의된 UI 요소는 화면에서 <code>X × density</code> 물리적 
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>- nativeBounds: 물리적 화면의 경계 사각형으로, 픽셀 단위로 측정됩니다.</span></span>
 <span class="line"><span>- nativeScale: 물리적 화면의 기본 배율입니다.</span></span></code></pre>
 <p>bounds (포인트 단위) × scale = nativeBounds (픽셀 단위, 근사치이며 최신 장치의 주 디스플레이에서는 scale이 일반적으로 nativeScale과 동일함).<br>
-(11)은 UIScreen.scale이 UIKit 배율이며 때때로 기본 배율과 다를 수 있어 OS에서 중간 배율 조정 단계가 발생할 수 있다고 설명합니다. 그러나 대부분의 앱 개발에서 UIScreen.main.scale이 관련 요소입니다. 32는 Metal 앱의 경우 리샘플링을 피하기 위해 nativeScale에서 렌더링할 것을 강조합니다.(<a href="https://developer.apple.com/documentation/mapkit/mkoverlayrenderer/contentscalefactor?changes=late__8_6_8_7&#x26;language=objc">17</a>)</p>
+(<a href="https://developer.android.com/develop/ui/views/layout/webapps/targeting">11</a>)은 UIScreen.scale이 UIKit 배율이며 때때로 기본 배율과 다를 수 있어 OS에서 중간 배율 조정 단계가 발생할 수 있다고 설명합니다. 그러나 대부분의 앱 개발에서 UIScreen.main.scale이 관련 요소입니다. (<a href="https://developer.apple.com/documentation/webkit/wkwebviewconfiguration">32</a>)는 Metal 앱의 경우 리샘플링을 피하기 위해 nativeScale에서 렌더링할 것을 강조합니다.(<a href="https://developer.apple.com/documentation/mapkit/mkoverlayrenderer/contentscalefactor?changes=late__8_6_8_7&#x26;language=objc">17</a>)</p>
 <h5 id="정보-흐름-os에서-uiscreen으로️️️">정보 흐름 (OS에서 UIScreen으로)⭐️⭐️⭐️:</h5>
 <p>iOS 운영체제는 연결된 디스플레이 하드웨어를 식별합니다.
 하드웨어의 픽셀 밀도(예: Retina 대 비 Retina)를 기반으로 디스플레이의 물리적 픽셀 해상도(nativeBounds)와 고유한 배율(nativeScale)을 결정합니다.
@@ -297,7 +297,7 @@ width=device-width는 CSS 픽셀 단위의 레이아웃 너비를 장치의 논�
 장치 밀도에 대한 지식을 의미합니다.</p>
 <p>(<a href="https://hacks.mozilla.org/2013/09/css-length-explained/">24</a>)은 이를 더 자세히 설명합니다: “WebView는 window.devicePixelRatio를 지원합니다… 이 값이 1.0이면 장치는 중간 밀도 장치로 간주됩니다… 값이 1.5이면 장치는 고밀도 장치로 간주됩니다… Android 브라우저와 WebView가 적용하는 배율은 웹 페이지의 대상
 밀도를 기반으로 하며… 기본 대상은 중간 밀도입니다.” 이는 WebView의 window.devicePixelRatio를 DisplayMetrics.density 값(1.0, 1.5 등)으로 정의되는 Android의 밀도 범주(mdpi, hdpi)와 직접 연결합니다.</p>
-<p>(33 - Android용 Blink 커밋 로그)는 “장치 픽셀을 직접 사용하여 픽셀 반올림 오류 방지… ViewAndroid는 크기 정보를 장치 픽셀 단위로 받습니다.”라고 언급합니다. 이는 Android의 Blink가 장치 픽셀 정보를 인식하고 이를 사용하여 작동하며, 이는
+<p>(<a href="https://bugs.webkit.org/show_bug.cgi?id=87407">33 - Android용 Blink 커밋 로그</a>)는 “장치 픽셀을 직접 사용하여 픽셀 반올림 오류 방지… ViewAndroid는 크기 정보를 장치 픽셀 단위로 받습니다.”라고 언급합니다. 이는 Android의 Blink가 장치 픽셀 정보를 인식하고 이를 사용하여 작동하며, 이는
 devicePixelRatio를 올바르게 계산하는 데 필수적임을 나타냅니다.</p>
 <h5 id="blink의-내부-프로세스">Blink의 내부 프로세스:</h5>
 <p>Blink는 네이티브 배율(DisplayMetrics.density에서 파생)을 사용하여 window.devicePixelRatio 값을 설정합니다.
@@ -306,12 +306,12 @@ devicePixelRatio를 올바르게 계산하는 데 필수적임을 나타냅니�
 <p><code>&#x3C;meta name="viewport" content="width=device-width, initial-scale=1"></code>을 사용하면 CSS 픽셀이 웹에서 dp에 해당하는 단위가 됩니다.
 그러면 window.devicePixelRatio는 물리적 픽셀 / dp에 해당하는 CSS 픽셀이 되며, 이는 DisplayMetrics.density와 수치적으로 동일합니다.
 31은 이에 대해 논의합니다: “WebView가 예를 들어 너비가 1920 물리적 픽셀인 경우 CSS 픽셀 단위의 너비는 hdpi 디스플레이에서 1280px여야 합니다.” (1920/1.5=1280). 이는 논리적 CSS 너비 = 물리적 픽셀 너비 / devicePixelRatio 관계를 확인시켜 줍니다.</p>
-<h4 id="ios---wkwebview-webkit-엔진">IOS - WKWebView (WebKit 엔진):</h4>
+<h5 id="ios---wkwebview-webkit-엔진">IOS - WKWebView (WebKit 엔진):</h5>
 <p>iOS의 최신 WebView 구성 요소로, WebKit 엔진(Safari와 동일)을 사용합니다.</p>
 <h5 id="uiscreenmainscale을-webkit으로-전달">UIScreen.main.scale을 WebKit으로 전달:</h5>
 <p>WKWebView는 UIView의 하위 클래스입니다. UIView 인스턴스에는 contentScaleFactor 속성이 있으며, 기본적으로 자신이 속한 UIScreen의 scale과 일치합니다.(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Viewport_meta_element">23</a>)<br>
 이 contentScaleFactor(사실상 UIScreen.main.scale)는 WebKit 렌더링 엔진에서 사용할 수 있습니다.
-30 (devicePixelRatio에 대한 WebKit 버그 토론): “뷰포트 태그를 기반으로 변경하는 대신 항상 기본 devicePixelRatio를 반환합니다… 이는 iOS 및 Android 브라우저 동작과 일치하며… 제 이해로는 window.devicePixelRatio는 구성된 뷰포트에 의존하지 않고
+(<a href="https://chromium.googlesource.com/chromium/src/+/a4951af7d99bc472b9577f85cc2002b9e213f4af">30 - devicePixelRatio에 대한 WebKit 버그 토론</a>): “뷰포트 태그를 기반으로 변경하는 대신 항상 기본 devicePixelRatio를 반환합니다… 이는 iOS 및 Android 브라우저 동작과 일치하며… 제 이해로는 window.devicePixelRatio는 구성된 뷰포트에 의존하지 않고
 장치의 상수 속성이어야 합니다.” 이는 iOS에서 window.devicePixelRatio가 UIScreen.main.scale로 설정됨을 강력하게 시사합니다.</p>
 <h5 id="webkit의-내부-프로세스">WebKit의 내부 프로세스:</h5>
 <p>WebKit은 UIScreen.main.scale 값(예: 1.0, 2.0, 3.0)을 가져와 window.devicePixelRatio를 이 값으로 설정합니다.<br>
@@ -334,26 +334,24 @@ WebView가 다른 배율 논리를 사용하면 웹 콘텐츠가 인접한 네�
 <blockquote>
 <p>DisplayMetric.density, UIScreen.main.scale, window.devicePixelRatio는 동일한 비율!</p>
 </blockquote>
-<h5 id="비율로서의-정의">비율로서의 정의:</h5>
+<h5 id="공통-목표-논리적-단위의-일관된-물리적-크기">공통 목표: 논리적 단위의 일관된 물리적 크기</h5>
+<p>세 플랫폼 모두 기본 논리적 단위(dp, point, CSS 픽셀)가 픽셀 밀도에 관계없이 모든 화면에서 거의 동일한 물리적 영역을 차지하도록 노력합니다.(7) 이를 통해 100 논리적 단위 너비로 정의된 버튼이 사용자에게 일관된 크기로 표시됩니다.</p>
 <h5 id="displaymetricsdensity-android">DisplayMetrics.density (Android):</h5>
 <p>장치 DPI / 160 DPI.<br>
 이는 장치의 물리적 픽셀 밀도 대 기준 논리적 밀도의 비율입니다.<br>
 1 dp를 1 논리적 픽셀 단위로 간주하면 density는 1 dp 단위에 맞는 (160 DPI에 해당하는) 물리적 픽셀 수(배율 조정됨)입니다.<br>
-또는 더 직접적으로, dp 단위를 물리적 픽셀로 변환하기 위해 배율 조정되는 요소입니다: 물리적 픽셀 = dp 값 × density.</p>
+또는 더 직접적으로, dp 단위를 물리적 픽셀로 변환하기 위해 배율 조정되는 요소입니다: <code>물리적 픽셀 = dp 값 × density</code></p>
 <h5 id="uiscreenmainscale-ios">UIScreen.main.scale (iOS):</h5>
 <p>물리적 픽셀 / 포인트.<br>
 이는 주어진 차원에 대한 물리적 픽셀 대 논리적 포인트의 직접적인 비율입니다.</p>
 <h5 id="windowdevicepixelratio-webview">window.devicePixelRatio (Webview):</h5>
 <p>물리적 픽셀 / CSS 픽셀<br>
 (뷰포트 initial-scale=1 및 width=device-width가 설정되어있다는 전제 하에 CSS 픽셀이 dp/point와 유사한 논리적 픽셀처럼 동작할 때)</p>
-<h5 id="공통-목표">공통 목표:</h5>
-<p>논리적 단위의 일관된 물리적 크기<br>
-세 플랫폼 모두 기본 논리적 단위(dp, point, CSS 픽셀)가 픽셀 밀도에 관계없이 모든 화면에서 거의 동일한 물리적 영역을 차지하도록 노력합니다.(7) 이를 통해 100 논리적 단위 너비로 정의된 버튼이 사용자에게 일관된 크기로 표시됩니다.</p>
 <h5 id="webview는-호스트-os-배율-존중">WebView는 호스트 OS 배율 존중:</h5>
 <p>6️⃣ 에서 설명했듯이 WebView(Blink를 사용하는 Android WebView, WebKit을 사용하는 iOS WKWebView)는 호스트 운영 체제에서 네이티브 배율을 가져오도록 설계되었습니다.<br>
 Android WebView는 DisplayMetrics.density를 사용하여 Blink에 정보를 제공하고, Blink는 window.devicePixelRatio를 이 값과 일치하도록 설정합니다.(<a href="https://hacks.mozilla.org/2013/09/css-length-explained/">24</a>)<br>
 iOS WKWebView는 UIScreen.main.scale(UIView.contentScaleFactor를 통해)을 사용하여 WebKit에 정보를 제공하고, WebKit은 window.devicePixelRatio를 이 값과 일치하도록 설정합니다.(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Viewport_meta_element">23</a>)</p>
-<h5 id="결과적인-동등성">결과적인 동등성:</h5>
+<h5 id="동등성">동등성:</h5>
 <p>dp(Android), point(iOS), 올바르게 구성된 CSS 픽셀(Web)은 모두 장치 독립적인 논리적 단위로 설계되었기 때문에, 그리고 배율(density, scale, devicePixelRatio)은 모두 물리적 픽셀 / 논리적 단위의 비율로 정의되기 때문에, 그리고 WebView는 window.
 devicePixelRatio에 대해 호스트 OS의 배율을 채택하기 때문에,
 따라서 DisplayMetrics.density(Android), UIScreen.main.scale(iOS), window.devicePixelRatio(해당 OS의 WebView에서 적절한 뷰포트 설정 사용)는 동일한 숫자 값을 갖게 됩니다. 이들은 모두 각 환경에서 하나의 논리적 픽셀을 렌더링하는 데 사용되는 물리적
@@ -395,15 +393,7 @@ devicePixelRatio에 대해 호스트 OS의 배율을 채택하기 때문에,
 
 
 
-
-
-
-
-
-
-
-
-<table><thead><tr><th>플랫폼</th><th>네이티브 배율 속성</th><th>정의 (비율)</th><th>주요 OS 출처/메커니즘</th><th>WebView window.devicePixelRatio 값 (initial-scale=1일 때)</th><th>주요 문서 ID</th></tr></thead><tbody><tr><td>------------</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Android</td><td>DisplayMetrics.density</td><td>장치 DPI / 160 DPI (사실상 dp당 물리적 픽셀)</td><td>OS 하드웨어 추상화 계층 -> DisplayMetrics</td><td>DisplayMetrics.density와 동일</td><td>1</td></tr><tr><td>iOS</td><td>UIScreen.main.scale</td><td>물리적 픽셀 / 포인트</td><td>OS 하드웨어 추상화 계층 -> UIScreen</td><td>UIScreen.main.scale과 동일</td><td>2</td></tr><tr><td>Web (독립 실행형)</td><td>window.devicePixelRatio</td><td>물리적 픽셀 / CSS 픽셀</td><td>디스플레이 속성에 대한 브라우저 해석</td><td>해당 없음 (자체가 출처임)</td><td>3</td></tr></tbody></table>
+<table><thead><tr><th>플랫폼</th><th>네이티브 배율 속성</th><th>정의 (비율)</th><th>주요 OS 출처/메커니즘</th><th>WebView window.devicePixelRatio 값 (initial-scale=1일 때)</th><th>주요 문서 ID</th></tr></thead><tbody><tr><td>Android</td><td>DisplayMetrics.density</td><td>장치 DPI / 160 DPI (사실상 dp당 물리적 픽셀)</td><td>OS 하드웨어 추상화 계층 -> DisplayMetrics</td><td>DisplayMetrics.density와 동일</td><td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-device-pixel-ratio">1</a></td></tr><tr><td>iOS</td><td>UIScreen.main.scale</td><td>물리적 픽셀 / 포인트</td><td>OS 하드웨어 추상화 계층 -> UIScreen</td><td>UIScreen.main.scale과 동일</td><td><a href="https://stackoverflow.com/questions/8785643/what-exactly-is-device-pixel-ratio">2</a></td></tr><tr><td>Web (독립 실행형)</td><td>window.devicePixelRatio</td><td>물리적 픽셀 / CSS 픽셀</td><td>디스플레이 속성에 대한 브라우저 해석</td><td>해당 없음 (자체가 출처임)</td><td><a href="https://www.w3.org/Style/Examples/007/units.en.html">3</a></td></tr></tbody></table>
 <br>
 <h4 id="8️⃣-결론">8️⃣ 결론</h4>
 <p>DisplayMetrics.density, UIScreen.main.scale, window.devicePixelRatio는 모두 논리적 디자인 단위와 물리적 화면 픽셀 간의 간극을 메우기 위해 설계된 동일한 필수 배율 메커니즘의 표현입니다.<br>
