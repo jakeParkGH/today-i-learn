@@ -268,8 +268,7 @@ W3C CSS Viewport Module에 따르면 이는 “실제 뷰포트(actual viewport)
 <p>페이지가 처음 로드될 때 확대/축소 수준을 제어하여 이 초기 확대/축소 수준에서 CSS 픽셀과 장치 독립적 픽셀(또는 OS의 논리적 픽셀) 간의 1:1 관계를 설정합니다.(<a href="https://developer.apple.com/documentation/uikit/uiscreen">14</a>)
 initial-scale=1이 없으면 width=device-width가 설정되어 있어도 브라우저가 여전히 일부 기본 배율을 적용하여 CSS 픽셀이 장치의 논리적 픽셀과 1:1로 정렬되지 않을 수 있습니다.</p>
 <h5 id="결합-효과">결합 효과:</h5>
-<p>두 가지 모두 설정되면(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-device-pixel-ratio">1</a>) CSS 픽셀은 장치 독립적 픽셀(Android의 dp 또는 iOS의 point와 유사)에 해당하도록 의도됩니다. 이 정렬은 window.devicePixelRatio가 OS 수준 배율을 정확하게 반영하는 데 핵심입니다. 그런 다음 devicePixelRatio는 해당 CSS 픽셀(이제
-dp/point와 정렬됨)에 사용되는 물리적 픽셀 수를 올바르게 나타냅니다.</p>
+<p>두 가지 모두 설정되면(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-device-pixel-ratio">1</a>) CSS 픽셀은 장치 독립적 픽셀(Android의 dp 또는 iOS의 point와 유사)에 해당하도록 의도됩니다. 이 정렬은 window.devicePixelRatio가 OS 수준 배율을 정확하게 반영하는 데 핵심입니다. 그런 다음 devicePixelRatio는 해당 CSS 픽셀(이제 dp/point와 정렬됨)에 사용되는 물리적 픽셀 수를 올바르게 나타냅니다.</p>
 <h5 id="확대축소의-영향">확대/축소의 영향:</h5>
 <p>페이지 확대/축소 (브라우저 확대/축소): devicePixelRatio에 영향을 미칩니다. 확대하면 CSS 픽셀의 크기가 커지므로 devicePixelRatio도 증가합니다.(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-device-pixel-ratio">1</a>)<br>
 핀치 줌: 렌더링된 페이지를 확대하지만 CSS 픽셀의 물리적 픽셀에 대한 정의를 변경하지 않으므로 devicePixelRatio에 영향을 미치지 않습니다.(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-device-pixel-ratio">1</a>)<br>
@@ -280,10 +279,9 @@ dp/point와 정렬됨)에 사용되는 물리적 픽셀 수를 올바르게 나�
 이 값은 window.devicePixelRatio 속성을 통해 JavaScript에 노출됩니다.</p>
 <p><strong>DisplayMetrics.density, UIScreen.main.scale, window.devicePixelRatio의 값이 실제로 일치하려면 웹 콘텐츠의 뷰포트가 올바르게 구성되어야 합니다.</strong></p>
 <p>DisplayMetrics.density는 dp 배율을 정의하고, UIScreen.main.scale은 point 배율을 정의합니다. 이들은 OS 수준의 논리적 단위입니다.<br>
-반면 window.devicePixelRatio는 물리적 픽셀을 CSS 픽셀과 연관시킵니다. 비율이 동등하려면 레이아웃 너비에 사용되는 CSS 픽셀이 OS의 논리적 픽셀(dp 또는 point)에 해당해야 합니다. <code>&#x3C;meta name="viewport" content="width=device-width,  initial-scale=1"></code> 설정이 이를 달성합니다.(<a href="https://developer.apple.com/documentation/uikit/uiscreen">14</a>)<br>
+반면 window.devicePixelRatio는 물리적 픽셀을 CSS 픽셀과 연관시킵니다. 비율이 동등하려면 레이아웃 너비에 사용되는 CSS 픽셀이 OS의 논리적 픽셀(dp 또는 point)에 해당해야 합니다. <code>&#x3C;meta name="viewport" content="width=device-width,  initial-scale=1"></code> 설정이 이를 가능하게 해줍니다.(<a href="https://developer.apple.com/documentation/uikit/uiscreen">14</a>)<br>
 width=device-width는 CSS 픽셀 단위의 레이아웃 너비를 장치의 논리적 너비로 설정하고, initial-scale=1은 이 너비에서 하나의 CSS 픽셀이 하나의 논리적 OS 픽셀과 동일한 유효 크기를 갖도록 보장합니다.</p>
-<p>이러한 메타 태그 설정이 없으면 브라우저는 다른 가상 뷰포트 너비(예: 320dp 화면에서도 기본 레이아웃 너비로 980 CSS 픽셀 사용)를 사용할 수 있으므로, 예를 들어 devicePixelRatio가 2이더라도 이는 dp/point에 해당하는 것이 아니라 축소된 CSS 픽셀당 2개의 물리적
-픽셀을 의미하게 됩니다.</p>
+<p>이러한 메타 태그 설정이 없으면 브라우저는 다른 가상 뷰포트 너비(예: 320dp 화면에서도 기본 레이아웃 너비로 980 CSS 픽셀 사용)를 사용할 수 있으므로, 예를 들어 devicePixelRatio가 2이더라도 이는 dp/point에 해당하는 것이 아니라 축소된 CSS 픽셀당 2개의 물리적 픽셀을 의미하게 됩니다.</p>
 <p>따라서 meta viewport 태그는 반응형 디자인의 모범 사례일 뿐만 아니라, window.devicePixelRatio가 DisplayMetrics.density 및 UIScreen.main.scale과 비교 가능한 방식으로 장치의 기본 배율을 정확하게 반영하기 위한 근본적인 전제 조건입니다.</p>
 <br>
 <h4 id="6️⃣-연결고리">6️⃣ 연결고리</h4>
