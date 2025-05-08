@@ -129,7 +129,7 @@ X dp로 정의된 UI 요소는 화면에서 <code>X × density</code> 물리적 
 이 densityDpi와 파생된 density (및 widthPixels, heightPixels와 같은 기타 메트릭)가 DisplayMetrics 객체에 채워집니다.
 애플리케이션과 Android 프레임워크는 DisplayMetrics를 통해 이러한 값에 접근할 수 있습니다.<br>
 밀도 버킷(mdpi, hdpi 등)은 리소스 관리를 위한 편리한 범주를 제공하지만, DisplayMetrics.density 자체는 화면의 실제 densityDpi에서 직접 파생된 부동 소수점 값이며, 버킷의 명목상 DPI에만 국한되지 않습니다.(<a href="https://99designs.com/blog/tips/ppi-vs-dpi-whats-the-difference/">6</a>)<br>
-예를 들어, 장치가 200dpi의 densityDpi를 가질 수 있으며, 이 경우 DisplayMetrics.density는 200/160=1.25가 됩니다. 이는 버킷을 기준으로 1.0이나 1.5로 고정되지 않습니다. 31에서는 Nexus 7이 1.33 (tvdpi, 213dpi/160dpi)의 픽셀 비율을 가진다고 언급하며, 이는 정수가 아닌 density 값이 일반적으로 사용됨을 보여줍니다.<br>
+예를 들어, 장치가 200dpi의 densityDpi를 가질 수 있으며, 이 경우 DisplayMetrics.density는 200/160=1.25가 됩니다. 이는 버킷을 기준으로 1.0이나 1.5로 고정되지 않습니다. (<a href="https://developer.apple.com/documentation/webkit/wkwebviewconfiguration">31</a>)에서는 Nexus 7이 1.33 (tvdpi, 213dpi/160dpi)의 픽셀 비율을 가진다고 언급하며, 이는 정수가 아닌 density 값이 일반적으로 사용됨을 보여줍니다.<br>
 결과적으로 DisplayMetrics.density는 디스플레이 하드웨어의 실제 기능을 반영하는 세분화된 배율을 제공하여, 버킷의 불연속적인 단계에 엄격하게 제한되는 경우보다 더 정확한 UI 배율 조정을 가능하게 합니다. 이러한 정밀도는 WebView가 window.devicePixelRatio를 정확하게 결정하는 데 중요합니다.</p>
 
 
