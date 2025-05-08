@@ -206,7 +206,7 @@ X dp로 정의된 UI 요소는 화면에서 <code>X × density</code> 물리적 
 <span class="line"><span>- nativeScale: 물리적 화면의 기본 배율입니다.</span></span></code></pre>
 <p>bounds (포인트 단위) × scale = nativeBounds (픽셀 단위, 근사치이며 최신 장치의 주 디스플레이에서는 scale이 일반적으로 nativeScale과 동일함).<br>
 (<a href="https://developer.android.com/develop/ui/views/layout/webapps/targeting">11</a>)은 UIScreen.scale이 UIKit 배율이며 때때로 기본 배율과 다를 수 있어 OS에서 중간 배율 조정 단계가 발생할 수 있다고 설명합니다. 그러나 대부분의 앱 개발에서 UIScreen.main.scale이 관련 요소입니다. (<a href="https://developer.apple.com/documentation/webkit/wkwebviewconfiguration">32</a>)는 Metal 앱의 경우 리샘플링을 피하기 위해 nativeScale에서 렌더링할 것을 강조합니다.(<a href="https://developer.apple.com/documentation/mapkit/mkoverlayrenderer/contentscalefactor?changes=late__8_6_8_7&#x26;language=objc">17</a>)</p>
-<h5 id="정보-흐름-os에서-uiscreen으로">정보 흐름 (OS에서 UIScreen으로):</h5>
+<h5 id="정보-흐름-os에서-️-uiscreen으로">정보 흐름 (OS에서 ➡️ UIScreen으로):</h5>
 <p>iOS 운영체제는 연결된 디스플레이 하드웨어를 식별합니다.
 하드웨어의 픽셀 밀도(예: Retina 대 비 Retina)를 기반으로 디스플레이의 물리적 픽셀 해상도(nativeBounds)와 고유한 배율(nativeScale)을 결정합니다.
 이 정보는 UIScreen 속성을 통해 노출되며, UIScreen.main.scale은 포인트 단위 UI 렌더링을 위한 기본 배율을 제공합니다.</p>
@@ -276,7 +276,7 @@ dp/point와 정렬됨)에 사용되는 물리적 픽셀 수를 올바르게 나�
 핀치 줌: 렌더링된 페이지를 확대하지만 CSS 픽셀의 물리적 픽셀에 대한 정의를 변경하지 않으므로 devicePixelRatio에 영향을 미치지 않습니다.(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-device-pixel-ratio">1</a>)<br>
 쿼리와의 관련성: 기본 배율(디스플레이에 대해 정적임)과의 비교를 위해 브라우저 확대/축소 없이 initial-scale=1에서 window.devicePixelRatio를 고려합니다.<br>
 (30 - WebKit 버그 토론)에서는 window.devicePixelRatio가 구성된 뷰포트(메타 태그)나 페이지 배율에 의존하지 않고 장치의 상수 속성이어야 한다고 언급하며, 이는 기본 비교를 위한 이상적인 상태를 반영합니다.</p>
-<h5 id="정보-흐름-렌더링-엔진에서-javascript로">정보 흐름 (렌더링 엔진에서 JavaScript로):</h5>
+<h5 id="정보-흐름-렌더링-엔진에서-️-javascript로">정보 흐름 (렌더링 엔진에서 ➡️ JavaScript로):</h5>
 <p>브라우저(WebView)의 렌더링 엔진(Blink, WebKit)은 기본 운영 체제 또는 임베딩 환경의 정보를 기반으로 장치 픽셀 비율을 결정합니다.<br>
 이 값은 window.devicePixelRatio 속성을 통해 JavaScript에 노출됩니다.</p>
 <p><strong>DisplayMetrics.density, UIScreen.main.scale, window.devicePixelRatio의 값이 실제로 일치하려면 웹 콘텐츠의 뷰포트가 올바르게 구성되어야 합니다.</strong></p>
